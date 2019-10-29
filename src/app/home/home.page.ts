@@ -22,10 +22,10 @@ export class HomePage {
 
   initializeItems() {
     this.items = [
-      {"name":"example", "has_lactoise":true, "g_lactoise":"0.5","grade_lactoise":"low", "state":"success"},
-      {"name":"lac_example", "has_lactoise":true, "g_lactoise":"2","grade_lactoise":"mid", "state":"warning"},
-      {"name":"example2", "has_lactoise":true, "g_lactoise":"8","grade_lactoise":"high", "state":"danger"},
-      {"name":"lac_example2", "has_lactoise":true, "g_lactoise":"0.2","grade_lactoise":"low","state":"success"}
+      {"name":"example", "has_lactose":true, "g_lactose":"0.5","grade_lactose":"low", "state":"success"},
+      {"name":"lac_example", "has_lactose":true, "g_lactose":"2","grade_lactose":"mid", "state":"warning"},
+      {"name":"example2", "has_lactose":true, "g_lactose":"8","grade_lactose":"high", "state":"danger"},
+      {"name":"lac_example2", "has_lactose":true, "g_lactose":"0.2","grade_lactose":"low","state":"success"}
 
     ];
   }
@@ -58,8 +58,8 @@ export class HomePage {
     this.manipulateFood(food).then((m_food)=>{
       this.eatenFood.push(m_food) 
     })
-    if(food.has_lactoise){
-      this.current += food.g_lactoise*100/this.maxTolerance;
+    if(food.has_lactose){
+      this.current += food.g_lactose*100/this.maxTolerance;
     }
   }
 
@@ -69,7 +69,7 @@ export class HomePage {
     console.log("IUBDEX : ", index)
     if(index>-1){
       this.eatenFood.splice(index,1)
-      this.current -= food.g_lactoise*100/this.maxTolerance
+      this.current -= food.g_lactose*100/this.maxTolerance
     }
   }
 

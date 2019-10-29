@@ -42,7 +42,7 @@
           <ion-list *ngIf="isItemAvailable">
             <ion-item *ngFor="let item of items" (click)="addFood(item)">
 
-              {{ item.name }}  <ion-badge color={{item.state}}>{{item.g_lactoise}}g * 100g</ion-badge>
+              {{ item.name }}  <ion-badge color={{item.state}}>{{item.g_lactose}}g * 100g</ion-badge>
             </ion-item>
           </ion-list>
         </div>
