@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {RoundProgressEase} from 'angular-svg-round-progressbar'
+import { RoundProgressEase } from 'angular-svg-round-progressbar';
 import { MaxLengthValidator } from '@angular/forms';
 import { resolve } from 'q';
 
@@ -9,24 +9,23 @@ import { resolve } from 'q';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  isItemAvailable: boolean = false;
+  isItemAvailable = false;
   items: any;
-  eaten_counter:number = 0;
-  maxTolerance:number = 10;
-  eatenFood:any[] = [];
-  current:number = 0;
+  eaten_counter = 0;
+  maxTolerance = 10;
+  eatenFood: any[] = [];
+  current = 0;
   constructor() {
   }
- //100 = massimo assumibile : 10g per 50% di intolleranza
+  // 100 = massimo assumibile : 10g per 50% di intolleranza
 
 
   initializeItems() {
     this.items = [
-      {"name":"example", "has_lactose":true, "g_lactose":"0.5","grade_lactose":"low", "state":"success"},
-      {"name":"lac_example", "has_lactose":true, "g_lactose":"2","grade_lactose":"mid", "state":"warning"},
-      {"name":"example2", "has_lactose":true, "g_lactose":"8","grade_lactose":"high", "state":"danger"},
-      {"name":"lac_example2", "has_lactose":true, "g_lactose":"0.2","grade_lactose":"low","state":"success"}
-
+      { name: 'example', has_lactose: true, g_lactose: '0.5', grade_lactose: 'low', state: 'success' },
+      { name: 'lac_example', has_lactose: true, g_lactose: '2', grade_lactose: 'mid', state: 'warning' },
+      { name: 'example2', has_lactose: true, g_lactose: '8', grade_lactose: 'high', state: 'danger' },
+      { name: 'lac_example2', has_lactose: true, g_lactose: '0.2', grade_lactose: 'low', state: 'success' }
     ];
   }
 
@@ -42,34 +41,33 @@ export class HomePage {
       this.isItemAvailable = true;
       this.items = this.items.filter((item) => {
         return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
-    }
-    else{
+      });
+    } else {
       this.isItemAvailable = false;
     }
   }
-  manipulateFood(food){
-    return new Promise((resolve,reject) => {
+  manipulateFood(food) {
+    return new Promise((resolve, reject) => {
       food.eaten_id = this.eaten_counter++;
-      resolve(food)
-    })
+      resolve(food);
+    });
   }
-  addFood(food: any){
-    this.manipulateFood(food).then((m_food)=>{
-      this.eatenFood.push(m_food) 
-    })
-    if(food.has_lactose){
-      this.current += food.g_lactose*100/this.maxTolerance;
+  addFood(food: any) {
+    this.manipulateFood(food).then((m_food) => {
+      this.eatenFood.push(m_food);
+    });
+    if (food.has_lactose) {
+      this.current += food.g_lactose * 100 / this.maxTolerance;
     }
   }
 
 
-  remove(food: any){
-    const index = this.eatenFood.indexOf(food,0);
-    console.log("IUBDEX : ", index)
-    if(index>-1){
-      this.eatenFood.splice(index,1)
-      this.current -= food.g_lactose*100/this.maxTolerance
+  remove(food: any) {
+    const index = this.eatenFood.indexOf(food, 0);
+    console.log('IUBDEX : ', index);
+    if (index > -1) {
+      this.eatenFood.splice(index, 1);
+      this.current -= food.g_lactose * 100 / this.maxTolerance;
     }
   }
 
