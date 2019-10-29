@@ -8,12 +8,19 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import {RoundProgressModule} from 'angular-svg-round-progressbar';
+import { RoundProgressModule } from 'angular-svg-round-progressbar';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,RoundProgressModule],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    RoundProgressModule,
+    ComponentsModule
+  ],
   providers: [
     StatusBar,
     SplashScreen,
@@ -21,4 +28,4 @@ import {RoundProgressModule} from 'angular-svg-round-progressbar';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
