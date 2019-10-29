@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
+import { RoundProgressModule } from 'angular-svg-round-progressbar';
 
 @NgModule({
   imports: [
@@ -16,7 +17,9 @@ import { HomePage } from './home.page';
         path: '',
         component: HomePage
       }
-    ])
+    ]
+    ),
+    RoundProgressModule
   ],
   declarations: [HomePage]
 })
